@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/Climate&Watering_screens/Climate_screen.dart';
 import 'package:graduation_project/Second_screen/Navigate_from_Home2.dart';
 import 'package:graduation_project/Second_screen/container_model.dart';
 import 'package:graduation_project/Second_screen/plants_model.dart';
@@ -127,7 +128,9 @@ class _Home2State extends State<Home2> {
                           'Smart Greenhouse',
                           style: TextStyle(
                               color: currentIndex2 == 0 ? Colors.green : Colors.black,
-                              fontSize: 18),),
+                              fontSize: 18
+                          ),
+                        ),
                         Text(
                           'Plants',
                           style: TextStyle(
@@ -149,12 +152,22 @@ class _Home2State extends State<Home2> {
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                 ContainerModel(
-                                     icon: Icon(Icons.thermostat,color: Colors.green,),
-                                     text: Text('Climate',style: TextStyle(color: Colors.green),),
-                                     text2: Text('18 C',style: TextStyle(color: Colors.grey),),
-                                     text3: Text(''),
-                                     containerColor: Colors.white
+                                 InkWell(
+                                   onTap: ()
+                                   {
+                                     Navigator.push(
+                                         context, MaterialPageRoute(
+                                       builder: (context) => ClimateScreen(),
+                                       ),
+                                     );
+                                   },
+                                   child: ContainerModel(
+                                       icon: const Icon(Icons.thermostat,color: Colors.green,),
+                                       text: const Text('Climate',style: TextStyle(color: Colors.green),),
+                                       text2: Text('18 C',style: TextStyle(color: Colors.grey),),
+                                       text3: Text(''),
+                                       containerColor: Colors.white
+                                   ),
                                  ),
                                   SizedBox(
                                    height: MediaQuery.of(context).size.height/10,
@@ -173,7 +186,12 @@ class _Home2State extends State<Home2> {
                                       ),
                                       text3: Padding(
                                         padding: EdgeInsets.only(left: MediaQuery.of(context).size.width/5),
-                                        child: Text('ON', style: TextStyle(color: currentIndex == 0? Colors.white : Colors.green,),),
+                                        child: Text(
+                                          currentIndex == 0 ? 'ON' : 'OFF',
+                                          style: TextStyle(
+                                            color: currentIndex == 0? Colors.white : Colors.green,
+                                          ),
+                                        ),
                                       ),
                                       text: Text('Lighting',style: TextStyle(color: currentIndex == 0? Colors.white : Colors.green,),),
                                       text2: Text('12 Watt',style: TextStyle(color: currentIndex == 0? Colors.white : Colors.green,),),
@@ -190,8 +208,8 @@ class _Home2State extends State<Home2> {
                                     onTap: () {},
 
                                     child: ContainerModel(
-                                        icon: Icon(Icons.water_drop_outlined,color: Colors.green,),
-                                        text: Text('Watering',style: TextStyle(color: Colors.green),),
+                                        icon: const Icon(Icons.water_drop_outlined,color: Colors.green,),
+                                        text: const Text('Watering',style: TextStyle(color: Colors.green),),
                                         text2: Text('2L',style: TextStyle(color: Colors.grey),),
                                         text3: Padding(
                                           padding: EdgeInsets.only(left: MediaQuery.of(context).size.width/5),
@@ -211,15 +229,21 @@ class _Home2State extends State<Home2> {
                                       });
                                     },
                                     child: ContainerModel(
-                                      icon: Icon(Icons.sunny,
+                                      icon: Icon(
+                                        Icons.wind_power,
                                         color: currentIndex == 1? Colors.white : Colors.green,
                                       ),
                                       text3: Padding(
                                         padding: EdgeInsets.only(left: MediaQuery.of(context).size.width/5),
-                                        child: Text('ON',style: TextStyle(color: currentIndex == 1? Colors.white : Colors.green,),),
+                                        child: Text(
+                                          currentIndex == 1 ?'ON' : 'OFF',
+                                          style: TextStyle(
+                                            color: currentIndex == 1? Colors.white : Colors.green,
+                                          ),
+                                        ),
                                       ),
-                                      text: Text('Lighting',style: TextStyle(color: currentIndex == 1? Colors.white : Colors.green,),),
-                                      text2: Text('12 Watt',style: TextStyle(color: currentIndex == 1? Colors.white : Colors.green,),),
+                                      text: Text('Ventilation',style: TextStyle(color: currentIndex == 1? Colors.white : Colors.green,),),
+                                      text2: Text('5m/s',style: TextStyle(color: currentIndex == 1? Colors.white : Colors.green,),),
                                       containerColor: currentIndex == 1? Colors.green : Colors.white,),
                                   ),
                                 ],
